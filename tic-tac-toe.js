@@ -14,7 +14,13 @@ window.onload = function() {
 
     gameboard.forEach((square, index) => {
         //console.log(index);
+
+        //Exercise 6 - Disallow Cheating
         square.addEventListener("click", function(){
+            if (gamestate[index]){
+                return;
+            }
+
             if (count % 2 == 0){
                 //console.log("click");
                 square.textContent = "X";
@@ -33,7 +39,7 @@ window.onload = function() {
             } 
 
             //Exercise 4 - Check winner and update status
-            winstates.forEach((state, index) => {
+            winstates.forEach(state => {
                 if (gamestate[state[0]] == "X" && gamestate[state[1]] == "X" && gamestate[state[2]] == "X"){
                     message.textContent = "Congratulations! X is the Winner!"
                     message.classList.add("you-won")
