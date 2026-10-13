@@ -31,7 +31,7 @@ window.onload = function() {
                 console.log(gamestate);
                 count++;
             } 
-            
+
             //Exercise 4 - Check winner and update status
             winstates.forEach((state, index) => {
                 if (gamestate[state[0]] == "X" && gamestate[state[1]] == "X" && gamestate[state[2]] == "X"){
@@ -44,6 +44,7 @@ window.onload = function() {
             })      
         });
     })
+
     //Exercise 3 - Change style on mouseover
     gameboard.forEach(square => {
         square.addEventListener("mouseover", function(){
@@ -53,5 +54,20 @@ window.onload = function() {
         square.addEventListener("mouseout", function(){
             square.classList.remove("hover");
         })
+    });
+
+    //Exercise 5 - Restart the game
+    let restartbtn = document.querySelector(".btn")
+    
+    restartbtn.addEventListener("click", function(){
+        gamestate = [];
+        count = 0;
+        message.textContent = "Move your mouse over a square and click to play an X or an O.";
+        message.classList.remove("you-won");
+        gameboard.forEach(square => {
+            square.textContent = "";
+            square.classList.remove("X");
+            square.classList.remove("O");
+        }) 
     });
 }
