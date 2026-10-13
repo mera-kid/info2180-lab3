@@ -1,7 +1,32 @@
 window.onload = function() {
-    let gameboard = document.querySelectorAll('#board > div');
+    //Exercise 1 - Layout the board
+    let gameboard = document.querySelectorAll("#board > div");
+    gameboard.forEach(div => {
+        div.classList.add("square")
+    })
 
-    gameboard.forEach(child => {
-        child.classList.add('square')
+    //Exercise 2 - Add X or O to square when clicked
+    let gamestate = [];
+    let count = 0;
+    gameboard.forEach((square, index) => {
+        //console.log(index);
+        square.addEventListener("click", function(){
+            if (count % 2 == 0){
+                //console.log("click");
+                square.textContent = "X";
+                square.classList.add("X");
+                gamestate[index] = "X";
+                console.log(gamestate);
+                count++;
+                
+            } else{
+                //console.log("click");
+                square.textContent = "O";
+                square.classList.add("O");
+                gamestate[index] = "O";
+                console.log(gamestate);
+                count++;
+            }       
+        });
     })
 }
